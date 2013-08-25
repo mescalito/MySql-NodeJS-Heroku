@@ -13,13 +13,14 @@ var connection = mysql.createConnection({
 connection.connect();
 
 app.get('/', function(request, response) {
-  connection.query('SELECT * from t_users', function(err, rows, fields) {
-	  if (err) {
-	  	console.log('error: ', err);
-	  	throw err;
-	  }
-	  response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
+	connection.query('SELECT * from t_users', function(err, rows, fields) {
+		  if (err) {
+		  	console.log('error: ', err);
+		  	throw err;
+		  }
+		  response.send(['Hello World!!!! HOLA MUNDO!!!!', rows]);
 	});
+	connection.end();
 });
 
 var port = process.env.PORT || 5000;
